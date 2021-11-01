@@ -4,18 +4,15 @@ name: default
 
 steps:
   - name: "Install and Build"
-    image: node:lts-buster
+    image: node:14-alpine3.14
+    failure: always
     commands:
       - yarn install --frozen-lockfile
       - yarn build
-    environment:
-      NEXT_PUBLIC_API_URL:
-        from_secret: NEXT_PUBLIC_API_URL
-      NEXT_PUBLIC_APIKEY:
-        from_secret: NEXT_PUBLIC_APIKEY
 
   - name: "Docker build latest"
     image: plugins/docker
+    failure: always
     settings:
       repo: stiforr/strapi-backend
       auto_tag: true
@@ -25,9 +22,10 @@ steps:
         from_secret: docker_password
 
   - name: "Release"
-    image: node:lts-buster
+    image: node:14-alpine3.14
+    failure: always
     commands:
-      - yarn semantic-release
+      - yarn release
     depends_on:
       - "Install and Build"
       - "Docker build latest"
