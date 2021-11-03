@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/insuusvenerati/strapi-backend/compare/1.0.1...1.0.2) (2021-11-03)
+
+
+### Bug Fixes
+
+* changes helm container port ([a9f5709](https://github.com/insuusvenerati/strapi-backend/commit/a9f57094424025735fd7e054ce626bb0860f0bc1))
+
 ## [1.0.1](https://github.com/insuusvenerati/strapi-backend/compare/1.0.0...1.0.1) (2021-11-03)
 
 
