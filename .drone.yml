@@ -30,7 +30,7 @@ steps:
         from_secret: minio_secret_access_key
 
   - name: "Install and Build"
-    image: node:14-alpine3.14
+    image: node:14-bullseye-slim
     when:
       event:
         exclude:
@@ -83,7 +83,7 @@ steps:
         from_secret: docker_password
 
   - name: "Release"
-    image: node:lts-buster
+    image: node:14-bullseye-slim
     failure: always
     commands:
       - yarn release
