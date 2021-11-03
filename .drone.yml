@@ -83,7 +83,7 @@ steps:
         from_secret: docker_password
 
   - name: "Release"
-    image: node:14-alpine3.14
+    image: node:lts-buster
     failure: always
     commands:
       - yarn release
