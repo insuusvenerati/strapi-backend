@@ -3,12 +3,73 @@ type: docker
 name: default
 
 steps:
+  - name: restore-cache-with-s3
+    image: plugins/s3-cache
+    pull: 'always'
+    when:
+      event:
+        exclude:
+          - tag
+    volumes:
+      - name: cache
+        path: /usr/local/share/.cache
+    settings:
+      restore: true
+      cache_key: '{{ .Repo.Name }}-{{ checksum "yarn.lock" }}'
+      path-style: true
+      endpoint: https://api.minio.home.stiforr.tech
+      bucket: insuusvenerati
+      region: us-east-1
+      filename: ${DRONE_REPO_NAME}.tar.gz
+      mount:
+        - './.cache'
+        - '/usr/local/share/.cache'
+      access_key:
+        from_secret: minio_access_key_id
+      secret_key:
+        from_secret: minio_secret_access_key
+
   - name: "Install and Build"
     image: node:14-alpine3.14
+    when:
+      event:
+        exclude:
+          - tag
     failure: always
     commands:
       - yarn install --frozen-lockfile
       - yarn build
+    depends_on:
+      - restore-cache-with-s3
+
+  - name: rebuild-cache-with-filesystem
+    image: plugins/s3-cache
+    pull: 'always'
+    volumes:
+      - name: cache
+        path: /usr/local/share/.cache
+    when:
+      event:
+        exclude:
+          - tag
+    settings:
+      rebuild: true
+      path-style: true
+      endpoint: https://api.minio.home.stiforr.tech
+      cache_key: '{{ .Repo.Name }}-{{ checksum "yarn.lock" }}'
+      filename: ${DRONE_REPO_NAME}.tar.gz
+      bucket: insuusvenerati
+      region: us-east-1
+      # filesystem_cache_root: "/tmp/cache"
+      mount:
+        - './.cache'
+        - '/usr/local/share/.cache'
+      access_key:
+        from_secret: minio_access_key_id
+      secret_key:
+        from_secret: minio_secret_access_key
+    depends_on:
+      - "Install and Build"
 
   - name: "Docker build latest"
     image: plugins/docker
@@ -38,7 +99,34 @@ steps:
           - main
           - develop
 
+  - name: Helm Package
+    image: stiforr/ci-tools:1
+    pull: 'always'
+    commands:
+      - helm package chart/
+
+  - name: Helm Push
+    image: stiforr/ci-tools:1
+    pull: 'always'
+    commands:
+      - /scripts/helm-push.sh
+    depends_on:
+      - 'Helm Package'
+    environment:
+      CHART_REPO_NAME:
+        from_secret: CHART_REPO_NAME
+      HELM_REPO_USERNAME:
+        from_secret: HELM_REPO_USERNAME
+      HELM_REPO_PASSWORD:
+        from_secret: HELM_REPO_PASSWORD
+      CHART_REPO_URL:
+        from_secret: CHART_REPO_URL
+
 trigger:
   branch:
     exclude:
       - renovate/*
+
+volumes:
+  - name: cache
+    temp: {}
