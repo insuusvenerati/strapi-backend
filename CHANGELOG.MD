@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/insuusvenerati/strapi-backend/compare/1.0.0...1.0.1) (2021-11-03)
+
+
+### Bug Fixes
+
+* update chart repo ([f39ef40](https://github.com/insuusvenerati/strapi-backend/commit/f39ef405b2e46acc617d4500976b68994e45c1c0))
+
 # 1.0.0 (2021-11-03)
 
 
