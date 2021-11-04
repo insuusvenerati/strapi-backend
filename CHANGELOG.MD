@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/insuusvenerati/strapi-backend/compare/1.1.0...1.1.1) (2021-11-04)
+
+
+### Bug Fixes
+
+* don't push helm chart until docker is finished ([4720555](https://github.com/insuusvenerati/strapi-backend/commit/4720555515e082299a280fd2b5cf27767005a0df))
+
 # [1.1.0](https://github.com/insuusvenerati/strapi-backend/compare/1.0.2...1.1.0) (2021-11-04)
 
 
