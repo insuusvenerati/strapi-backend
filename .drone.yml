@@ -107,6 +107,8 @@ steps:
     pull: 'always'
     commands:
       - helm package chart/
+    depends_on:
+      - "Docker build latest"
     when:
       event:
         include:
@@ -119,6 +121,7 @@ steps:
       - /scripts/helm-push.sh
     depends_on:
       - 'Helm Package'
+      - "Docker build latest"
     environment:
       HELM_REPO_USERNAME:
         from_secret: HELM_REPO_USERNAME
@@ -137,4 +140,4 @@ trigger:
 
 volumes:
   - name: cache
-    temp: {}
+    temp: { }
