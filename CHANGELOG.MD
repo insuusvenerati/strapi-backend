@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/insuusvenerati/strapi-backend/compare/1.1.3...1.1.4) (2021-11-04)
+
+
+### Bug Fixes
+
+* add missing jwt secret to helm chart ([8e9d087](https://github.com/insuusvenerati/strapi-backend/commit/8e9d0872fd85181b35c6420ce4a5b1f11cb72fd1))
+
 ## [1.1.3](https://github.com/insuusvenerati/strapi-backend/compare/1.1.2...1.1.3) (2021-11-04)
 
 
