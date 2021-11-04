@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/insuusvenerati/strapi-backend/compare/1.1.1...1.1.2) (2021-11-04)
+
+
+### Bug Fixes
+
+* add database creds to helm chart ([e13d46d](https://github.com/insuusvenerati/strapi-backend/commit/e13d46d01604f596993057f5f3def3b2a81f3491))
+
 ## [1.1.1](https://github.com/insuusvenerati/strapi-backend/compare/1.1.0...1.1.1) (2021-11-04)
 
 
