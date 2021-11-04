@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/insuusvenerati/strapi-backend/compare/1.1.2...1.1.3) (2021-11-04)
+
+
+### Bug Fixes
+
+* updates helm chart database env vars ([c4b5be8](https://github.com/insuusvenerati/strapi-backend/commit/c4b5be87c5001b7b7f43322b73e2ca8133416cd1))
+
 ## [1.1.2](https://github.com/insuusvenerati/strapi-backend/compare/1.1.1...1.1.2) (2021-11-04)
 
 
