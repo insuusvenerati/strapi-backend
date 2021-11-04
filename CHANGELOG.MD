@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/insuusvenerati/strapi-backend/compare/1.0.2...1.1.0) (2021-11-04)
+
+
+### Features
+
+* update backend to use postgres ([c00f20b](https://github.com/insuusvenerati/strapi-backend/commit/c00f20be1ee1e519a160a44e6483718d9b6f2522))
+
 ## [1.0.2](https://github.com/insuusvenerati/strapi-backend/compare/1.0.1...1.0.2) (2021-11-03)
 
 
