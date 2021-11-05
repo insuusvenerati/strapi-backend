@@ -47,7 +47,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.postgres.existingSecret}}
-                  key: password
+                  key: postgresql-password
             - name: ADMIN_JWT_SECRET
               valueFrom:
                 secretKeyRef:
