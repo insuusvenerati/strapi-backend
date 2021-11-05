@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/insuusvenerati/strapi-backend/compare/1.1.4...1.1.5) (2021-11-05)
+
+
+### Bug Fixes
+
+* updates helm's postgres secret keys ([282c58b](https://github.com/insuusvenerati/strapi-backend/commit/282c58b5c2213a342c82d02b464587c48ca8e953))
+
 ## [1.1.4](https://github.com/insuusvenerati/strapi-backend/compare/1.1.3...1.1.4) (2021-11-04)
 
 
